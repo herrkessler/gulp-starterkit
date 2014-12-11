@@ -1,0 +1,68 @@
+// -----------------------------------------------------------------------
+// General Styles
+// -----------------------------------------------------------------------
+
+* {
+  &:after, &:before {
+    @include box-sizing(border-box);
+  }
+}
+
+body, html {
+  width: 100%;
+}
+
+body {
+  position: relative;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+// -----------------------------------------------------------------------
+// Grid Container and Row
+// -----------------------------------------------------------------------
+
+.container {
+  @include outer-container;
+}
+
+.row {
+  @include col(1, $cycle: 1);
+}
+
+// -----------------------------------------------------------------------
+// Grid Examples
+// -----------------------------------------------------------------------
+
+.grid-3 {
+  @include col(1/4, $cycle: 4);
+  background: silver;
+  height: 200px;
+  margin-bottom: $default-margin;
+  @include media($tablet) {
+    @include col(1/2, $cycle: 2, $uncycle: 4);
+  }
+  @include media($mobile) {
+    @include col(1, $cycle: 1, $uncycle: 2);
+  }
+}
+
+.span-3 {
+  @include span(1/4, $cycle: 4);
+  background: silver;
+  height: 200px;
+  border: 1px solid white;
+  @include media($tablet) {
+    @include span(1/2, $cycle: 2, $uncycle: 4);
+  }
+  @include media($mobile) {
+    @include span(1, $cycle: 1, $uncycle: 2);
+  }
+}
+
+// -----------------------------------------------------------------------
+// Specific Styles
+// -----------------------------------------------------------------------
