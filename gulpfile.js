@@ -24,7 +24,8 @@ var gulp        = require('gulp'),
     colors      = require('colors'),
     browserSync = require('browser-sync').create(),
     imagemin    = require('gulp-imagemin'),
-    pngcrush    = require('imagemin-pngcrush')
+    pngcrush    = require('imagemin-pngcrush'),
+    reload      = browserSync.reload,
     server      = tinylr();
 
 // -------------------------------------------------------------
@@ -124,10 +125,9 @@ gulp.task('js', function() {
   return gulp.src(jsFiles)
     .pipe( include() )
     .pipe( concat('all.js'))
-    .pipe( gulp.dest(paths.scripts.dist));
+    .pipe( gulp.dest(paths.scripts.dist))
+    .pipe(reload({stream:true}));
 });
-
-gulp.task('js-watch', ['js'], browserSync.reload);
 
 
 gulp.task('images', function() {
@@ -145,8 +145,11 @@ gulp.task('templates', function() {
     .pipe(jade({
       pretty: true
     }))
-    .pipe(gulp.dest(paths.templates.dist));
+    .pipe(gulp.dest(paths.templates.dist))
+    .pipe(reload({stream:true}));
 });
+
+gulp.task('templates-watch', ['templates'], browserSync.reload);
 
 gulp.task('browser-sync', function() {
   browserSync.init({
@@ -163,12 +166,13 @@ gulp.task('watch', function () {
     }
 
     gulp.watch(paths.styles.src + '**/*.scss',['css']);
-    gulp.watch(paths.scripts.src + '**/*.js',['js-watch']);
+    gulp.watch(paths.scripts.src + '**/*.js',['js']);
+    gulp.watch(paths.templates.src + '**/*.jade',['templates']);
 
   });
 });
 
-gulp.task('default', ['js', 'ie','css', 'templates', 'images', 'fonts','watch', 'browser-sync']);
+gulp.task('default', ['js', 'ie', 'css', 'templates', 'images', 'fonts', 'watch', 'browser-sync']);
 
 // -------------------------------------------------------------
 // --- Production Build Tasks ---
