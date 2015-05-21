@@ -1,0 +1,29 @@
+{
+  "name": "gulp-starterkit",
+  "version": "0.0.2",
+  "authors": [
+    "Sebastian Kessler <sebastian@herrkessler.de>"
+  ],
+  "description": "A basic asset setup for dev and prod with Gulp, down to IE8",
+  "main": "gulpfile.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "gulp",
+    "jquery",
+    "bourbon",
+    "imagemin",
+    "express",
+    "autoprefixer",
+    "gzip"
+  ],
+  "license": "MIT",
+  "homepage": "http://www.herrkessler.de",
+  "devDependencies": {
+    "jquery": "~1.11.2",
+    "html5shiv": "latest",
+    "selectivizr": "latest",
+    "jeet": "latest"
+  }
+}
