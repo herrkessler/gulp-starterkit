@@ -1,15 +1,37 @@
 extends ../layout/_layout
 block content
 
-  .row
-    - for (var x = 0; x < 4; x++)
-      .grid-3
-  .row
-    - for (var x = 0; x < 4; x++)
-      .span-3
+  include partials/_slider
 
   .row
-    h1 Ich bin ein H1
-    p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+    .grid-3
+      i.fa.fa-beer
+    .grid-3
+      i.fa.fa-tree
+    .grid-3
+      i.fa.fa-anchor
+    .grid-3
+      i.fa.fa-camera-retro
 
-    img#bild.bild(src='assets/images/example.jpg', data-attr='assets/images/example.jpg')
+  .row
+    .span-3
+      i.fa.fa-camera-retro
+    .span-3
+      i.fa.fa-anchor
+    .span-3
+      i.fa.fa-tree
+    .span-3
+      i.fa.fa-beer
+
+  .row
+    .grid-4
+      h1 Ich bin ein H1
+      h2 Ich bin ein H2
+      h3 Ich bin ein H3
+      h4 Ich bin ein H4
+      br
+      p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+    .grid-4
+      img#bild.bild(src='assets/images/example.jpg', data-attr='assets/images/example.jpg')
+    .grid-4
+      img#bild.bild(src='assets/images/example.jpg', data-attr='assets/images/example.jpg')
