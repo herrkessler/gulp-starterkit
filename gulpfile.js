@@ -189,9 +189,6 @@ gulp.task('css-prod', function() {
         browsers: ['last 2 versions'],
         cascade: false
     }))
-    .pipe(rename(function (path) {
-      path.basename += ".min";
-    }))
     .pipe( csso() )
     .pipe( gulp.dest(paths.styles.build) );
 });
@@ -200,7 +197,7 @@ gulp.task('js-prod', function() {
   return gulp.src(jsFiles)
     .pipe( include() )
     .pipe( uglify() )
-    .pipe( concat('all.min.js'))
+    .pipe( concat('all.js'))
     .pipe( gulp.dest(paths.scripts.build));
 });
 
