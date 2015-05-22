@@ -30,7 +30,7 @@ img {
 }
 
 .row {
-  @include col(1, $cycle: 1);
+  @include col(1);
 }
 
 // -----------------------------------------------------------------------
@@ -52,14 +52,18 @@ img {
 
 .span-3 {
   @include span(1/4, $cycle: 4);
-  background: silver;
   height: 200px;
-  border: 1px solid white;
   @include media($tablet) {
     @include span(1/2, $cycle: 2, $uncycle: 4);
   }
   @include media($mobile) {
     @include span(1, $cycle: 1, $uncycle: 2);
+  }
+  &:nth-child(even) {
+    background: silver;
+  }
+  &:nth-child(odd) {
+    background: grey;
   }
 }
 
