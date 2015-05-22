@@ -68,19 +68,19 @@ var bowerPath = 'bower_components/';
 
 var cssFiles = [
   paths.styles.src,
-  bowerPath+'jeet/scss',
-  bowerPath+'slick.js/slick/'
+  bowerPath + 'jeet/scss',
+  bowerPath + 'slick.js/slick/'
   ];
 
 var jsFiles = [
-  bowerPath+'jquery/dist/jquery.min.js',
-  bowerPath+'slick.js/slick/slick.js',
+  bowerPath + 'jquery/dist/jquery.min.js',
+  bowerPath + 'slick.js/slick/slick.js',
   paths.scripts.src + 'app.js'
   ];
 
 var ieFiles = [
-  bowerPath+'html5shiv/dist/html5shiv.js',
-  bowerPath+'selectivizr/selectivizr.js'
+  bowerPath + 'html5shiv/dist/html5shiv.js',
+  bowerPath + 'selectivizr/selectivizr.js'
   ];
 
 var fontFiles = [
@@ -93,11 +93,11 @@ var fontFiles = [
 
 gulp.task('css', function() {
 
-  var onError = function (err) {
+  var onError = function(err) {
     console.log("[SASS Error]".red);
-    console.log("in: "+err.fileName);
-    console.log("on line: "+err.lineNumber);
-    console.log("message: "+(err.message).red);
+    console.log("in: " + err.fileName);
+    console.log("on line: " + err.lineNumber);
+    console.log("message: " + (err.message).red);
     this.emit('end');
   };
 
@@ -112,32 +112,31 @@ gulp.task('css', function() {
       cascade: false
     }))
     .pipe(sourcemaps.write())
-    .pipe( gulp.dest(paths.styles.dist) )
+    .pipe(gulp.dest(paths.styles.dist))
     .pipe(browserSync.stream());
 });
 
 gulp.task('fonts', function() {
   return gulp.src(fontFiles)
-    .pipe( gulp.dest(paths.fonts.dist));
+    .pipe(gulp.dest(paths.fonts.dist));
 });
 
 gulp.task('js', function() {
   return gulp.src(jsFiles)
-    .pipe( include() )
-    .pipe( concat('all.js'))
-    .pipe( gulp.dest(paths.scripts.dist))
+    .pipe(include())
+    .pipe(concat('all.js'))
+    .pipe(gulp.dest(paths.scripts.dist))
     .pipe(reload({stream:true}));
 });
 
-
 gulp.task('images', function() {
   return gulp.src(paths.images.src + '**/*')
-    .pipe( gulp.dest(paths.images.dist));
+    .pipe(gulp.dest(paths.images.dist))
 });
 
 gulp.task('ie', function() {
   return gulp.src(ieFiles)
-    .pipe( gulp.dest(paths.scripts.dist + '/ie/'));
+    .pipe(gulp.dest(paths.scripts.dist + '/ie/'))
 });
 
 gulp.task('templates', function() {
@@ -149,8 +148,6 @@ gulp.task('templates', function() {
     .pipe(reload({stream:true}));
 });
 
-gulp.task('templates-watch', ['templates'], browserSync.reload);
-
 gulp.task('browser-sync', function() {
   browserSync.init({
     server: {
@@ -159,15 +156,15 @@ gulp.task('browser-sync', function() {
   });
 });
 
-gulp.task('watch', function () {
-  server.listen(35728, function (err) {
+gulp.task('watch', function() {
+  server.listen(35728, function(err) {
     if (err) {
       return console.log(err);
     }
 
-    gulp.watch(paths.styles.src + '**/*.scss',['css']);
-    gulp.watch(paths.scripts.src + '**/*.js',['js']);
-    gulp.watch(paths.templates.src + '**/*.jade',['templates']);
+    gulp.watch(paths.styles.src + '**/*.scss', ['css']);
+    gulp.watch(paths.scripts.src + '**/*.js', ['js']);
+    gulp.watch(paths.templates.src + '**/*.jade', ['templates']);
 
   });
 });
@@ -181,24 +178,24 @@ gulp.task('default', ['js', 'ie', 'css', 'templates', 'images', 'fonts', 'watch'
 gulp.task('css-prod', function() {
   return gulp.src(paths.styles.src + '*.scss')
     .pipe(
-      sass( {
+      sass({
         includePaths: cssFiles.concat(neat),
-      } ) )
-    .pipe( gulp.dest(paths.styles.dist) )
+      }))
+    .pipe(gulp.dest(paths.styles.dist))
     .pipe(autoprefixer({
-        browsers: ['last 2 versions'],
-        cascade: false
+      browsers: ['last 2 versions'],
+      cascade: false
     }))
-    .pipe( csso() )
-    .pipe( gulp.dest(paths.styles.build) );
+    .pipe(csso())
+    .pipe(gulp.dest(paths.styles.build));
 });
 
 gulp.task('js-prod', function() {
   return gulp.src(jsFiles)
-    .pipe( include() )
-    .pipe( uglify() )
-    .pipe( concat('all.js'))
-    .pipe( gulp.dest(paths.scripts.build));
+    .pipe(include())
+    .pipe(uglify())
+    .pipe(concat('all.js'))
+    .pipe(gulp.dest(paths.scripts.build));
 });
 
 gulp.task('templates-prod', function() {
@@ -215,13 +212,13 @@ gulp.task('images-prod', function() {
       progressive: true,
       svgoPlugins: [{removeViewBox: false}],
       use: [pngcrush()]
-      }))
-    .pipe( gulp.dest(paths.images.build));
+    }))
+  .pipe(gulp.dest(paths.images.build));
 });
 
 gulp.task('fonts-prod', function() {
   return gulp.src(fontFiles)
-    .pipe( gulp.dest(paths.fonts.build));
+    .pipe(gulp.dest(paths.fonts.build));
 });
 
 gulp.task('compress-js', ['js-prod'], function() {
