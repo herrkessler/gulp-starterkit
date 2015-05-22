@@ -24,6 +24,9 @@
     "jquery": "~1.11.2",
     "html5shiv": "latest",
     "selectivizr": "latest",
-    "jeet": "latest"
+    "jeet": "latest",
+    "slick.js": "latest",
+    "sanitize-css": "latest",
+    "font-awesome": "latest"
   }
 }

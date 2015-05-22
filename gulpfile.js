@@ -67,8 +67,9 @@ var paths = {
 var bowerPath = 'bower_components/';
 
 var cssFiles = [
-  paths.styles.src,
-  bowerPath + 'jeet/scss',
+  bowerPath + 'jeet/scss/',
+  bowerPath + 'font-awesome/scss/',
+  bowerPath + 'sanitize-css/',
   bowerPath + 'slick.js/slick/'
   ];
 
@@ -84,7 +85,8 @@ var ieFiles = [
   ];
 
 var fontFiles = [
-  'fonts/*'
+  bowerPath + 'font-awesome/fonts/**.*',
+  'fonts/**.*'
   ];
 
 // -------------------------------------------------------------

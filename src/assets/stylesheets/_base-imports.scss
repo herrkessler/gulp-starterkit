@@ -11,9 +11,10 @@
 // Libraries
 // -----------------------------------------------------------------------
 
-@import "lib/reset";
-@import "lib/font-awesome/font-awesome";
-@import "lib/jeet/index";
+@import "sanitize";
+@import "font-awesome";
+@import "jeet/index";
+@import "slick";
 
 // -----------------------------------------------------------------------
 // Variables, Colors & Custom Mixins

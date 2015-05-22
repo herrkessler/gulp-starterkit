@@ -27,6 +27,9 @@ img {
 
 .container {
   @include outer-container;
+  @include media($screen) {
+    padding: 0 $dp;
+  }
 }
 
 .row {
@@ -39,11 +42,32 @@ img {
 
 .grid-3 {
   @include col(1/4, $cycle: 4);
+  position: relative;
   background: silver;
   height: 200px;
-  margin-bottom: $default-margin;
+  margin-bottom: $dm;
   @include media($tablet) {
     @include col(1/2, $cycle: 2, $uncycle: 4);
+  }
+  @include media($mobile) {
+    @include col(1, $cycle: 1, $uncycle: 2);
+  }
+  &:nth-child(even) {
+    background: silver;
+  }
+  &:nth-child(odd) {
+    background: lighten(silver, 10%);
+  }
+  i {
+    @include total-center;
+  }
+}
+
+.grid-4 {
+  @include col(1/3, $cycle: 3);
+  margin-bottom: $dm;
+  @include media($tablet) {
+    @include col(1/2, $cycle: 2, $uncycle: 3);
   }
   @include media($mobile) {
     @include col(1, $cycle: 1, $uncycle: 2);
@@ -52,7 +76,9 @@ img {
 
 .span-3 {
   @include span(1/4, $cycle: 4);
+  position: relative;
   height: 200px;
+  margin-bottom: $dm;
   @include media($tablet) {
     @include span(1/2, $cycle: 2, $uncycle: 4);
   }
@@ -63,10 +89,46 @@ img {
     background: silver;
   }
   &:nth-child(odd) {
-    background: grey;
+    background: lighten(silver, 10%);
+  }
+  i {
+    @include total-center;
   }
 }
 
 // -----------------------------------------------------------------------
 // Specific Styles
 // -----------------------------------------------------------------------
+
+#menu {
+  @include span(1);
+  margin: $dm*2 0;
+}
+
+.menu-item {
+  display: inline-block;
+  margin-right: $dm;
+  &.logo {
+    float: right;
+    font-weight: bold;
+    margin-right: 0;
+  }
+}
+
+#slider {
+  @include col(1);
+  margin-bottom: $dm*2;
+}
+
+.slide {
+  @include size(100% 50vh);
+  position: relative;
+  background: lighten(silver, 10%);
+  i {
+    @include total-center;
+    font-size: 2rem;
+  }
+  &.dark {
+    background: silver;
+  }
+}
