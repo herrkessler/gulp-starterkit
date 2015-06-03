@@ -237,4 +237,4 @@ gulp.task('compress-css', ['css-prod'], function() {
     .pipe(gulp.dest(paths.styles.build));
 });
 
-gulp.task('build', ['compress-js', 'compress-css', 'templates-prod', 'images-prod']);
+gulp.task('build', ['compress-js', 'compress-css', 'templates-prod', 'images-prod', 'fonts-prod']);
