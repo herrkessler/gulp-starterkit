@@ -106,7 +106,7 @@ img {
 }
 
 .menu-item {
-  display: inline-block;
+  float: left;
   margin-right: $dm;
   &.logo {
     float: right;
@@ -131,4 +131,16 @@ img {
   &.dark {
     background: silver;
   }
+}
+
+.slick-list {
+  margin-bottom: $dm/2;
+}
+
+.slick-prev {
+  float: left;
+}
+
+.slick-next {
+  float: right;
 }
