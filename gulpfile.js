@@ -144,7 +144,8 @@ gulp.task('ie', function() {
 gulp.task('templates', function() {
   return gulp.src(paths.templates.src + '*.jade')
     .pipe(jade({
-      pretty: true
+      pretty: true,
+      locals: 'development'
     }))
     .pipe(gulp.dest(paths.templates.dist))
     .pipe(reload({stream:true}));
@@ -203,7 +204,8 @@ gulp.task('js-prod', function() {
 gulp.task('templates-prod', function() {
   return gulp.src(paths.templates.src + '*.jade')
     .pipe(jade({
-      pretty: true
+      pretty: false,
+      locals: 'production'
     }))
     .pipe(gulp.dest(paths.templates.build));
 });
