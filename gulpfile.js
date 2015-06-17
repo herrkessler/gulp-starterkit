@@ -103,7 +103,8 @@ gulp.task('css', function() {
     this.emit('end');
   };
 
-  return gulp.src(paths.styles.src + '*.scss')
+  return gulp
+    .src(paths.styles.src + '*.scss')
     .pipe(plumber({errorHandler: onError}))
     .pipe(sourcemaps.init())
     .pipe(sass({
@@ -119,12 +120,14 @@ gulp.task('css', function() {
 });
 
 gulp.task('fonts', function() {
-  return gulp.src(fontFiles)
+  return gulp
+    .src(fontFiles)
     .pipe(gulp.dest(paths.fonts.dist));
 });
 
 gulp.task('js', function() {
-  return gulp.src(jsFiles)
+  return gulp
+    .src(jsFiles)
     .pipe(include())
     .pipe(concat('all.js'))
     .pipe(gulp.dest(paths.scripts.dist))
@@ -132,17 +135,20 @@ gulp.task('js', function() {
 });
 
 gulp.task('images', function() {
-  return gulp.src(paths.images.src + '**/*')
+  return gulp
+    .src(paths.images.src + '**/*')
     .pipe(gulp.dest(paths.images.dist))
 });
 
 gulp.task('ie', function() {
-  return gulp.src(ieFiles)
+  return gulp
+    .src(ieFiles)
     .pipe(gulp.dest(paths.scripts.dist + '/ie/'))
 });
 
 gulp.task('templates', function() {
-  return gulp.src(paths.templates.src + '*.jade')
+  return gulp
+    .src(paths.templates.src + '*.jade')
     .pipe(jade({
       pretty: true,
       locals: 'development'
@@ -179,7 +185,8 @@ gulp.task('default', ['js', 'ie', 'css', 'templates', 'images', 'fonts', 'watch'
 // -------------------------------------------------------------
 
 gulp.task('css-prod', function() {
-  return gulp.src(paths.styles.src + '*.scss')
+  return gulp
+    .src(paths.styles.src + '*.scss')
     .pipe(
       sass({
         includePaths: cssFiles.concat(neat),
@@ -194,7 +201,8 @@ gulp.task('css-prod', function() {
 });
 
 gulp.task('js-prod', function() {
-  return gulp.src(jsFiles)
+  return gulp
+    .src(jsFiles)
     .pipe(include())
     .pipe(uglify())
     .pipe(concat('all.js'))
@@ -202,7 +210,8 @@ gulp.task('js-prod', function() {
 });
 
 gulp.task('templates-prod', function() {
-  return gulp.src(paths.templates.src + '*.jade')
+  return gulp
+    .src(paths.templates.src + '*.jade')
     .pipe(jade({
       pretty: false,
       locals: 'production'
@@ -211,7 +220,8 @@ gulp.task('templates-prod', function() {
 });
 
 gulp.task('images-prod', function() {
-  return gulp.src(paths.images.src + '**/*')
+  return gulp
+    .src(paths.images.src + '**/*')
     .pipe(imagemin({
       progressive: true,
       svgoPlugins: [{removeViewBox: false}],
@@ -221,18 +231,21 @@ gulp.task('images-prod', function() {
 });
 
 gulp.task('fonts-prod', function() {
-  return gulp.src(fontFiles)
+  return gulp
+    .src(fontFiles)
     .pipe(gulp.dest(paths.fonts.build));
 });
 
 gulp.task('compress-js', ['js-prod'], function() {
-  return gulp.src(paths.scripts.build + 'all.min.js')
+  return gulp
+    .src(paths.scripts.build + 'all.min.js')
     .pipe(gzip())
     .pipe(gulp.dest(paths.scripts.build));
 });
 
 gulp.task('compress-css', ['css-prod'], function() {
-  return gulp.src(paths.styles.build + 'all.min.css')
+  return gulp
+    .src(paths.styles.build + 'all.min.css')
     .pipe(gzip())
     .pipe(gulp.dest(paths.styles.build));
 });
