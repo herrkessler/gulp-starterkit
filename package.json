@@ -1,7 +1,10 @@
 {
   "name": "gulp-starterkit",
   "version": "0.0.2",
-  "description": "a basic asset setup for dev&prod with gulp, jeet, bourbon, etc. working even with IE8",
+  "description": "a basic asset setup for dev&prod with gulp, jeet, bourbon, fontawesome, etc.",
+  "keywords": "gulp, jeet, bourbon, fontawesome, slick, html5shic, selectivizr, scss, starterkit",
+  "license": "MIT License",
+  "main": "gulpfile.js",
   "email": "sebastian@herrkessler.de",
   "author": {
     "name": "Sebastian Kessler",
