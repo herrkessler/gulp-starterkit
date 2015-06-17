@@ -5,7 +5,6 @@
 @import "bourbon";
 @import "neat";
 @import "neat-helpers";
-@import "grid/grid-settings";
 
 // -----------------------------------------------------------------------
 // Libraries
@@ -26,7 +25,14 @@
 @import "var/type";
 
 // -----------------------------------------------------------------------
+// Variables, Colors & Custom Mixins
+// -----------------------------------------------------------------------
+
+@import "grid/grid-settings";
+
+// -----------------------------------------------------------------------
 // Specific Styles
 // -----------------------------------------------------------------------
 
 @import "specific/styles";
+@import "specific/js-breakpoints";

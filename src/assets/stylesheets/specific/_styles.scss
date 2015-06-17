@@ -27,7 +27,7 @@ img {
 
 .container {
   @include outer-container;
-  @include media($screen) {
+  @include media($desktop) {
     padding: 0 $dp;
   }
 }

@@ -1,0 +1,16 @@
+body:before {
+  content: "mobile";
+  display: none;
+}
+
+@media (min-width: $tabletWidth) {
+  body:before {
+    content: "tablet";
+  }
+}
+
+@media (min-width: $desktopWidth) {
+  body:before {
+    content: "desktop";
+  }
+}
