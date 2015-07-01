@@ -27,6 +27,8 @@
     "jeet": "latest",
     "slick.js": "latest",
     "sanitize-css": "latest",
-    "font-awesome": "latest"
+    "font-awesome": "latest",
+    "include-media": "latest",
+    "include-media-export": "git@github.com:herrkessler/include-media-export.git"
   }
 }
