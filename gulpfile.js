@@ -71,16 +71,13 @@ var cssFiles = [
   bowerPath + 'jeet/scss/',
   bowerPath + 'font-awesome/scss/',
   bowerPath + 'sanitize-css/',
-  bowerPath + 'sanitize-css/',
   bowerPath + 'include-media/dist/',
-  bowerPath + 'include-media-export/',
   bowerPath + 'slick.js/slick/'
   ];
 
 var jsFiles = [
   bowerPath + 'jquery/dist/jquery.min.js',
   bowerPath + 'slick.js/slick/slick.js',
-  bowerPath + 'include-media-export/includeMedia.js',
   paths.scripts.src + 'app.js'
   ];
 
@@ -115,11 +112,11 @@ gulp.task('css', function() {
     .pipe(sass({
       includePaths: cssFiles.concat(neat)
     }))
-    // .pipe(autoprefixer({
-    //   browsers: ['last 2 versions'],
-    //   cascade: false
-    // }))
-    // .pipe(sourcemaps.write())
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
+    }))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.styles.dist))
     .pipe(browserSync.stream());
 });
