@@ -78,6 +78,7 @@ var cssFiles = [
 var jsFiles = [
   bowerPath + 'jquery/dist/jquery.min.js',
   bowerPath + 'slick.js/slick/slick.js',
+  bowerPath + 'mustache.js/mustache.js/',
   paths.scripts.src + 'app.js'
   ];
 

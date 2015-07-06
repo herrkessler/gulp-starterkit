@@ -28,6 +28,7 @@
     "slick.js": "latest",
     "sanitize-css": "latest",
     "font-awesome": "latest",
-    "include-media": "latest"
+    "include-media": "latest",
+    "mustache.js": "latest"
   }
 }

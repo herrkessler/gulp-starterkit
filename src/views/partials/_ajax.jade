@@ -1,0 +1,10 @@
+.row
+  script#dateTemplate(type='x-tmpl-mustache').
+    <div class="grid-6 centered">
+      <p> 
+        <span>Today is <b>{{ date }}</b></span>
+        <span>and it is onload() it was <b>{{ time }}</b> at GMT</span>
+      </p>
+    </div>
+
+  #dateTarget
