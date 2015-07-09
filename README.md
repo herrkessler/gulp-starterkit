@@ -13,7 +13,7 @@ git clone https://github.com/herrkessler/gulp-starterkit.git
 Then install the dependencies:
 
 ```bash
-npm install  && bower install
+npm install --save-dev && bower install
 ```
 
 ## Do The Things
@@ -26,7 +26,7 @@ gulp
  or
 
 ```bash
-gulp build
+gulp critical
 ```
  for production.
 
