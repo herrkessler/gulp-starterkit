@@ -26,6 +26,7 @@ var gulp        = require('gulp'),
     imagemin    = require('gulp-imagemin'),
     pngcrush    = require('imagemin-pngcrush'),
     critical    = require('critical').stream,
+    ftp         = require( 'vinyl-ftp' ),
     reload      = browserSync.reload,
     server      = tinylr();
 
@@ -37,27 +38,27 @@ var paths = {
   styles: {
     src: 'src/assets/stylesheets/',
     dist: 'dist/assets/css/',
-    build: 'build/assets/css'
+    build: 'build/assets/css/'
   },
   scripts: {
     src: 'src/assets/scripts/',
     dist: 'dist/assets/js/',
-    build: 'build/assets/js'
+    build: 'build/assets/js/'
   },
   fonts: {
     src: 'src/assets/fonts/',
     dist: 'dist/assets/fonts/',
-    build: 'build/assets/fonts'
+    build: 'build/assets/fonts/'
   },
   images: {
     src: 'src/assets/images/',
     dist: 'dist/assets/images/',
-    build: 'build/assets/images'
+    build: 'build/assets/images/'
   },
   templates: {
     src: 'src/views/',
     dist: 'dist/',
-    build: 'build'
+    build: 'build/'
   }
 };
 
@@ -69,7 +70,6 @@ var bowerPath = 'bower_components/';
 
 var cssFiles = [
   bowerPath + 'jeet/scss/',
-  bowerPath + 'font-awesome/scss/',
   bowerPath + 'sanitize-css/',
   bowerPath + 'include-media/dist/',
   bowerPath + 'slick.js/slick/'
@@ -88,7 +88,6 @@ var ieFiles = [
   ];
 
 var fontFiles = [
-  bowerPath + 'font-awesome/fonts/**.*',
   'fonts/**.*'
   ];
 
@@ -253,15 +252,41 @@ gulp.task('compress-css', ['css-prod'], function() {
 
 gulp.task('build', ['compress-js', 'compress-css', 'templates-prod', 'images-prod', 'fonts-prod']);
 
+// -------------------------------------------------------------
+// --- Cititcal CSS Task ---
+// -------------------------------------------------------------
+
 gulp.task('critical', ['build'], function(cb) {
   return gulp.src('build/index.html')
     .pipe(require('critical').stream({
       inline: true,
       base: 'build/',
-      width: 320,
-      height: 480,
+      width: 1024,
+      height: 768,
       minify: true,
       pathPrefix: './'
     }))
     .pipe(gulp.dest('build'));
+});
+
+// -------------------------------------------------------------
+// --- Deploy via FTP Task ---
+// -------------------------------------------------------------
+
+gulp.task('deploy', function() {
+
+  var conn = ftp.create({
+    host:     'example.com',
+    user:     'username',
+    password: 'password',
+    parallel: 10,
+    log:      gutil.log,
+  });
+
+  var globs = ['build/*'];
+
+  return gulp.src(globs, { base: './build/', buffer: false })
+    .pipe(conn.newer('/'))
+    .pipe(conn.dest('/'));
+
 });

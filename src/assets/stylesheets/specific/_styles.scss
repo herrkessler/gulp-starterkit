@@ -14,6 +14,11 @@ body, html {
 
 body {
   position: relative;
+  font-family: sans-serif;
+  font-family: sans-serif;
+  .wf-active & {
+    font-family: 'ABeeZee', sans-serif;
+  }
 }
 
 img {
@@ -65,12 +70,17 @@ img {
 
 .grid-6 {
   @include col(1/2, $cycle: 2);
-  position: relative;
   background: silver;
   height: 200px;
   margin-bottom: $dm*4;
   &.centered {
+    position: relative;
     @include shift($ratios: 1/4);
+    @include media("<=tablet") {
+      @include col(1);
+      @include unshift();
+      position: relative;
+    }
   }
   p {
     @include total-center;
@@ -119,6 +129,13 @@ img {
 // Specific Styles
 // -----------------------------------------------------------------------
 
+h1, h2, h3, h4 {
+  font-family: serif;
+  .wf-active & {
+    font-family: 'Bitter', serif;
+  }
+}
+
 #menu {
   @include span(1);
   margin: $dm*2 0;
@@ -154,12 +171,4 @@ img {
 
 .slick-list {
   margin-bottom: $dm/2;
-}
-
-.slick-prev {
-  float: left;
-}
-
-.slick-next {
-  float: right;
 }
