@@ -197,10 +197,10 @@ gulp.task('css-prod', function() {
         includePaths: cssFiles.concat(neat)
       }))
     .pipe(gulp.dest(paths.styles.dist))
-    .pipe(autoprefixer({
-      browsers: ['last 2 versions'],
-      cascade: false
-    }))
+    .pipe(postcss([
+      lost(),
+      autoprefixer()
+    ]))
     .pipe(csso())
     .pipe(gulp.dest(paths.styles.build));
 });
