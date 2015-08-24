@@ -20,13 +20,15 @@ var gulp        = require('gulp'),
     sourcemaps  = require('gulp-sourcemaps'),
     plumber     = require('gulp-plumber'),
     rename      = require('gulp-rename'),
-    autoprefixer = require('gulp-autoprefixer'),
     colors      = require('colors'),
     browserSync = require('browser-sync').create(),
     imagemin    = require('gulp-imagemin'),
     pngcrush    = require('imagemin-pngcrush'),
     critical    = require('critical').stream,
     ftp         = require( 'vinyl-ftp' ),
+    postcss     = require('gulp-postcss'),
+    lost        = require('lost'),
+    autoprefixer = require('autoprefixer'),
     reload      = browserSync.reload,
     server      = tinylr();
 
@@ -83,8 +85,10 @@ var jsFiles = [
   ];
 
 var ieFiles = [
+  bowerPath + 'jquery/dist/jquery.min.js',
   bowerPath + 'html5shiv/dist/html5shiv.js',
-  bowerPath + 'selectivizr/selectivizr.js'
+  bowerPath + 'selectivizr/selectivizr.js',
+  bowerPath + 'calc-polyfill/calc.js'
   ];
 
 var fontFiles = [
@@ -112,10 +116,10 @@ gulp.task('css', function() {
     .pipe(sass({
       includePaths: cssFiles.concat(neat)
     }))
-    .pipe(autoprefixer({
-      browsers: ['last 2 versions'],
-      cascade: false
-    }))
+    .pipe(postcss([
+      lost(),
+      autoprefixer()
+    ]))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.styles.dist))
     .pipe(browserSync.stream());

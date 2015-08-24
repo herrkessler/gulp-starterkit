@@ -40,6 +40,9 @@
     "browser-sync": "*",
     "critical": "git+https://github.com/addyosmani/critical.git",
     "tiny-lr": "*",
+    "lost": "*",
+    "autoprefixer": "*",
+    "gulp-postcss": "*",
     "vinyl-ftp": "*"
   }
 }
