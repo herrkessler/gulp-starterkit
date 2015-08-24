@@ -24,6 +24,7 @@ body {
 img {
   display: block;
   max-width: 100%;
+  height: auto;
 }
 
 // -----------------------------------------------------------------------
@@ -167,8 +168,18 @@ h1, h2, h3, h4 {
   &.dark {
     background: silver;
   }
+  &:not(:first-child) {
+    display: none;
+  }
+  .slick-initialized & {
+    display: block;
+  }
 }
 
 .slick-list {
   margin-bottom: $dm/2;
+}
+
+.lazy {
+  background: lighten(silver, 10%);
 }
