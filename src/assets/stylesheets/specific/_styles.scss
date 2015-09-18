@@ -56,7 +56,7 @@ img {
     lost-column: 1/2 2;
   }
   @include media("<=phone") {
-    lost-column: 1 1;
+    lost-column: 1 1 0;
   }
   &:nth-child(even) {
     background: silver;
@@ -75,10 +75,10 @@ img {
   background: silver;
   height: 200px;
   margin-bottom: $dm*3;
-  lost-offset: -1/4;
+  lost-move: 1/4;
   @include media("<=tablet") {
-    lost-column: 1;
-    lost-offset: 0;
+    lost-column: 1/1;
+    lost-move: 0;
   }
   p {
     @include total-center;
@@ -102,15 +102,15 @@ img {
 }
 
 .span-3 {
-  lost-column: 1/4 4 0px;
+  lost-column: 1/4 4 0;
   position: relative;
   height: 200px;
   margin-bottom: $dm;
   @include media("<=tablet") {
-    lost-column: 1/2 2 0px;
+    lost-column: 1/2 2 0;
   }
   @include media("<=phone") {
-    lost-column: 1 1 0px;
+    lost-column: 1 1 0;
   }
   &:nth-child(even) {
     background: silver;
