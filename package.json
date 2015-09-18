@@ -23,7 +23,6 @@
     "gulp-autoprefixer": "*",
     "gulp-jade": "*",
     "gulp-concat": "*",
-    "gulp-csso": "*",
     "gulp-gzip": "*",
     "gulp-include": "*",
     "gulp-plumber": "*",
@@ -43,6 +42,7 @@
     "lost": "*",
     "autoprefixer": "*",
     "gulp-postcss": "*",
+    "gulp-cssnano": "*",
     "vinyl-ftp": "*"
   }
 }

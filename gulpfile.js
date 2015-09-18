@@ -6,7 +6,7 @@ var gulp        = require('gulp'),
     gutil       = require('gulp-util'),
     sass        = require('gulp-sass'),
     jade        = require('gulp-jade'),
-    csso        = require('gulp-csso'),
+    nano        = require('gulp-cssnano'),
     uglify      = require('gulp-uglify'),
     concat      = require('gulp-concat'),
     gzip        = require('gulp-gzip'),
@@ -201,7 +201,7 @@ gulp.task('css-prod', function() {
       lost(),
       autoprefixer()
     ]))
-    .pipe(csso())
+    .pipe(nano())
     .pipe(gulp.dest(paths.styles.build));
 });
 
@@ -265,8 +265,8 @@ gulp.task('critical', ['build'], function(cb) {
     .pipe(require('critical').stream({
       inline: true,
       base: 'build/',
-      width: 1024,
-      height: 768,
+      width: 320,
+      height: 480,
       minify: true,
       pathPrefix: './'
     }))
