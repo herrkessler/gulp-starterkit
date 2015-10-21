@@ -11,9 +11,11 @@
 // -----------------------------------------------------------------------
 
 @import "sanitize";
-@import "slick";
 @import "include-media";
 @import "lib/include-media-export";
+
+@import url("wallop/css/wallop.css");
+@import url("wallop/css/wallop--slide.css");
 
 // -----------------------------------------------------------------------
 // Variables, Colors & Custom Mixins

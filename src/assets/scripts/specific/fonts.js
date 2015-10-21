@@ -1,4 +1,4 @@
-$(document).ready(function() {
+contentLoaded(window, function() {
   WebFont.load({
       google: {
         families: ['Bitter', 'ABeeZee'],

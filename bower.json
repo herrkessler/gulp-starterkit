@@ -13,7 +13,6 @@
     "gulp",
     "jquery",
     "bourbon",
-    "imagemin",
     "express",
     "autoprefixer",
     "gzip"
@@ -21,13 +20,13 @@
   "license": "MIT",
   "homepage": "http://www.herrkessler.de",
   "devDependencies": {
-    "jquery": "~1.11.2",
     "html5shiv": "latest",
     "selectivizr": "latest",
     "calc-polyfill": "latest",
-    "slick.js": "latest",
+    "wallop": "latest",
     "sanitize-css": "latest",
     "include-media": "latest",
-    "mustache.js": "latest"
+    "mustache.js": "latest",
+    "contentloaded": "*"
   }
 }

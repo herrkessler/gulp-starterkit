@@ -149,6 +149,32 @@ h1, h2, h3, h4 {
   }
 }
 
+.Wallop-list {
+  margin-bottom: $dm;
+}
+
+.wallop-slider--navigation {
+  button {
+    cursor: pointer;
+  }
+}
+
+.Wallop-buttonPrevious {
+  float: left;
+  &:before {
+    content: "\2039";
+    padding-right: $dm/4;
+  }
+}
+
+.Wallop-buttonNext {
+  float: right;
+  &:after {
+    content: "\203A";
+    padding-left: $dm/4;
+  }
+}
+
 #slider {
   lost-column: 1;
   margin-bottom: $dm*2;
@@ -156,7 +182,6 @@ h1, h2, h3, h4 {
 
 .slide {
   @include size(100% 50vh);
-  position: relative;
   background: lighten(silver, 10%);
   i {
     @include total-center;
@@ -165,16 +190,6 @@ h1, h2, h3, h4 {
   &.dark {
     background: silver;
   }
-  &:not(:first-child) {
-    display: none;
-  }
-  .slick-initialized & {
-    display: block;
-  }
-}
-
-.slick-list {
-  margin-bottom: $dm/2;
 }
 
 .lazy {

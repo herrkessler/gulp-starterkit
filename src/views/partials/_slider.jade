@@ -1,10 +1,15 @@
 .row
-    #slider
-      .slide
+  .Wallop.Wallop--slide#slider
+    .Wallop-list
+      .slide.Wallop-item.Wallop-item--current
         i.fa.fa-beer
-      .slide.dark
+      .slide.dark.Wallop-item
         i.fa.fa-tree
-      .slide
+      .slide.Wallop-item
         i.fa.fa-anchor
-      .slide.dark
+      .slide.dark.Wallop-item
         i.fa.fa-camera-retro
+
+    .wallop-slider--navigation 
+      button.Wallop-buttonPrevious Previous
+      button.Wallop-buttonNext Next

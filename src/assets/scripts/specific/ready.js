@@ -1,3 +1,3 @@
-$(document).ready(function() {
-  // console.log('Document Ready');
+contentLoaded(window, function() {
+  console.log('Document Ready');
 });

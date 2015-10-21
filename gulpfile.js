@@ -22,13 +22,12 @@ var gulp        = require('gulp'),
     rename      = require('gulp-rename'),
     colors      = require('colors'),
     browserSync = require('browser-sync').create(),
-    imagemin    = require('gulp-imagemin'),
-    pngcrush    = require('imagemin-pngcrush'),
     critical    = require('critical').stream,
     ftp         = require( 'vinyl-ftp' ),
     postcss     = require('gulp-postcss'),
     lost        = require('lost'),
     autoprefixer = require('autoprefixer'),
+    atImport    = require("postcss-import"), 
     reload      = browserSync.reload,
     server      = tinylr();
 
@@ -71,15 +70,13 @@ var paths = {
 var bowerPath = 'bower_components/';
 
 var cssFiles = [
-  bowerPath + 'jeet/scss/',
   bowerPath + 'sanitize-css/',
-  bowerPath + 'include-media/dist/',
-  bowerPath + 'slick.js/slick/'
+  bowerPath + 'include-media/dist/'
   ];
 
 var jsFiles = [
-  bowerPath + 'jquery/dist/jquery.min.js',
-  bowerPath + 'slick.js/slick/slick.js',
+  bowerPath + 'contentloaded/src/contentloaded.js',
+  bowerPath + 'wallop/js/Wallop.js',
   bowerPath + 'mustache.js/mustache.js/',
   paths.scripts.src + 'app.js'
   ];
@@ -118,7 +115,8 @@ gulp.task('css', function() {
     }))
     .pipe(postcss([
       lost(),
-      autoprefixer()
+      autoprefixer(),
+      atImport()
     ]))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.styles.dist))
@@ -199,7 +197,8 @@ gulp.task('css-prod', function() {
     .pipe(gulp.dest(paths.styles.dist))
     .pipe(postcss([
       lost(),
-      autoprefixer()
+      autoprefixer(),
+      atImport()
     ]))
     .pipe(nano())
     .pipe(gulp.dest(paths.styles.build));
@@ -226,12 +225,7 @@ gulp.task('templates-prod', function() {
 gulp.task('images-prod', function() {
   return gulp
     .src(paths.images.src + '**/*')
-    .pipe(imagemin({
-      progressive: true,
-      svgoPlugins: [{removeViewBox: false}],
-      use: [pngcrush()]
-    }))
-  .pipe(gulp.dest(paths.images.build));
+    .pipe(gulp.dest(paths.images.build));
 });
 
 gulp.task('fonts-prod', function() {

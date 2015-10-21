@@ -31,8 +31,6 @@
     "gulp-sourcemaps": "*",
     "gulp-uglify": "*",
     "gulp-util": "*",
-    "gulp-imagemin": "*",
-    "imagemin-pngcrush": "*",
     "marked": "*",
     "node-bourbon": "*",
     "node-neat": "*",
@@ -43,6 +41,7 @@
     "autoprefixer": "*",
     "gulp-postcss": "*",
     "gulp-cssnano": "*",
+    "postcss-import": "*",
     "vinyl-ftp": "*"
   }
 }

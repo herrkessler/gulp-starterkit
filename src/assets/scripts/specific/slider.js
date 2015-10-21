@@ -1,4 +1,4 @@
-$(document).ready(function() {
-  var slider = $('#slider');
-  slider.slick(); 
+contentLoaded(window, function() {
+  var wallopEl = document.querySelector('.Wallop');
+  var slider = new Wallop(wallopEl);
 });
